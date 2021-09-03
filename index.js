@@ -3,6 +3,7 @@ const express = require("express");
 const bodyParse = require("body-parser")
 const conexao = require("./database/database")
 const app = express();
+const perguntaModel = require("./database/Pergunta");
 
 conexao.authenticate().then(()=>{
     console.log("conexão feita com o banco de dados!")
