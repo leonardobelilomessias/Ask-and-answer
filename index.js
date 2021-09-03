@@ -4,6 +4,7 @@ const bodyParse = require("body-parser")
 const conexao = require("./database/database")
 const app = express();
 const Pergunta = require("./database/Pergunta");
+const Resposta = require("./database/Resposta");
 
 conexao.authenticate().then(()=>{
     console.log("conexão feita com o banco de dados!")
@@ -30,8 +31,18 @@ app.get("/pergunta/:id",(req,res)=>{
     Pergunta.findOne({
         where:{id:id}
     }).then((pergunta)=>{
+        
+
         if(pergunta != undefined){
-            res.render("pergunta",{pergunta:pergunta});
+             
+            Resposta.findAll({
+                where:{ perguntaId: pergunta.id},
+                order:[['id','DESC']]
+            }).then((respostas)=>{
+                res.render("pergunta",{pergunta:pergunta,respostas:respostas});
+            })
+
+            
         }else{
             res.redirect("/")
         }
@@ -52,6 +63,16 @@ app.post("/salvarpergunta",(req,res)=>{
         res.redirect("/");
     })
     
+})
+
+app.post("/responder",(req,res)=>{
+    let corpo = req.body.corpo
+    let perguntaId = req.body.perguntaId
+    Resposta.create({
+        corpo:corpo,
+        perguntaId:perguntaId
+    })
+    res.redirect(`/pergunta/${perguntaId}`)
 })
 
 app.listen(8080,(erro)=>{

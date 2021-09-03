@@ -7,10 +7,38 @@
         <h1> <%= pergunta.titulo %>  </h1>
         <hr>
         <div class="card">
-            <div class="card-body"> <p><%= pergunta.descricao %></p> </div>
-            <div class="card-footer"> <button class="btn btn-primary">Responder</button></div>
-            
+            <div class="card-header"> <p><%= pergunta.descricao %></p> </div>
+            <form action="/responder" method="post" class="card-body">
+                <textarea  placeholder="Digite sua resposta" class="form-control" name="corpo" id="" cols="30" rows="10"></textarea>
+                <input type="hidden" name="perguntaId" value="<%= pergunta.id %>" >
+            <div class="card-footer"> 
+                <button class="btn btn-primary">Responder</button>
+            </div>
+        </form>
         </div>
     </div>
+    <br>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h3>Respostas</h3>
+            </div>
+        </div>
+     
+
+        <% respostas.forEach((resposta)=>{ %>
+            <br>
+            <div class="card">
+                    <div class="card-body">
+                        <%= resposta.corpo %> 
+                    </div>
+            </div>
+            <br>
+        <% }) %> 
+
+    <br>
+    
+    </div>
+
 </body>
 <%- include("partials/footer.ejs") %> 
