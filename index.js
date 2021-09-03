@@ -11,6 +11,10 @@ app.get("/",(req,res)=>{
 app.get("/perguntar",(req,res)=>{
     res.render("perguntar")
 })
+app.post("/salvarpergunta",(req,res)=>{
+    let resposta = req.body
+    res.send(resposta)
+})
 app.listen(8080,(erro)=>{
     if(erro){
         console.log("Houve um erro")

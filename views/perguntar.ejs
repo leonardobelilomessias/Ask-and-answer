@@ -1,23 +1,13 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/style.css">
-    
-    <title>AandA- perguntas</title>
-</head>
+<%- include ("partials/header.ejs") %> 
 <body>
-    <nav class="navbar navbar-ligth bg-light"><a style="margin-left: 20px;"  class="navbar-brand " href="/"><img class="pr-5"" src="https://cdn-icons-png.flaticon.com/512/752/752675.png" alt="" width="50px" height="50px"> Perguntas</a></nav>
+    <%- include("partials/navbar") %> 
     <div class="container mt-4">
         <div class="card">
             <div class="card-header">
                 <h3>Realizar pergunta</h3>
             </div>
             <div class="card-body">
-                <form action="" method="get">
+                <form action="/salvarpergunta" method="POST">
                     <label>Titulo</label>
                     <input type="text" name="texto" id="texto" class="form-control " placeholder=" Titulo">
                     <label>Descrição</label>
@@ -31,10 +21,5 @@
     
     </div>
     
-
-    
 </body>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
-<script src="/js/bootstrap.min.js"></script>
-</html>
+<%- include ("partials/footer.ejs") %> 
